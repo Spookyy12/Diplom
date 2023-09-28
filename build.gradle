@@ -14,7 +14,7 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
     testImplementation 'mysql:mysql-connector-java:8.0.30'
-    testImplementation 'com.github.javafaker:javafaker:1.0.2'
+    implementation group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
     testImplementation 'commons-dbutils:commons-dbutils:1.7'
     testImplementation 'com.codeborne:selenide:6.18.0'
     testImplementation "org.projectlombok:lombok:1.18.28"

@@ -16,18 +16,18 @@ public class MainPage {
     private SelenideElement cardHolderName = $x("//*[@id=\"root\"]/div/form/fieldset/div[3]/span/span[1]/span/span/span[2]/input");
     private SelenideElement cardHolderCVC = $x("//*[@id=\"root\"]/div/form/fieldset/div[3]/span/span[2]/span/span/span[2]/input");
     private SelenideElement buttonNext = $x("//*[@id=\"root\"]/div/form/fieldset/div[4]/button/span/span");
-    private SelenideElement textCorrect = $(".notification__content");
+    private SelenideElement textCorrect = $(".notification__title");
 
 
     public String validCardForString() {
         buttonReady.click();
-        cardHolderNumber.setValue(DataHelper.getAuthInfo().getNumberCard());
+        cardHolderNumber.setValue("1111222233334444");
         cardHolderMonthDate.setValue(String.valueOf(DataHelper.getAuthInfo().getMonth()));
         cardHolderYearDate.setValue(String.valueOf(DataHelper.getAuthInfo().getYear()));
         cardHolderName.setValue(String.valueOf(DataHelper.getAuthInfo().getCardName()));
         cardHolderCVC.setValue(String.valueOf(DataHelper.getAuthInfo().getNumberCvc()));
         buttonNext.click();
-        textCorrect.shouldBe(visible, Duration.ofSeconds(20)).shouldHave(Condition.exactText("Операция одобрена Банком."));
+        textCorrect.shouldBe(visible, Duration.ofSeconds(20)).shouldHave(Condition.exactText("Успешно"));
         return new String();
     }
 

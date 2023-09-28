@@ -14,9 +14,6 @@ public class CardTest {
 
     @Test
     public void validTest(){
-
-
         mainPage.validCardForString();
-
     }
 }

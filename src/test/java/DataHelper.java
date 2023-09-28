@@ -18,7 +18,8 @@ public class DataHelper {
 
 
         public static UserCard getAuthInfo() {
-            return new UserCard(faker.finance().creditCard(), sdf.format(faker.date().birthday()), faker.random().nextInt(23, 28), faker.random().nextInt(100, 999), faker.name().fullName());
+            return new UserCard(faker.finance().creditCard(), sdf.format(faker.date().birthday()),
+                    faker.random().nextInt(23, 28), faker.random().nextInt(100, 999), faker.name().fullName());
         }
 
         @Value

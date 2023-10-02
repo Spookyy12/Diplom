@@ -26,8 +26,8 @@ public class DataHelper {
                 yearGenerate, faker.name().fullName());
     }
 
-    public static UserCardApproved userDeclinedCard() {
-        return new UserCardApproved(cvc, "5555 6666 7777 8888", monthGenerate,
+    public static UserCardDeclined userDeclinedCard() {
+        return new UserCardDeclined(cvc, "5555 6666 7777 8888", monthGenerate,
                 yearGenerate, faker.name().fullName());
     }
 

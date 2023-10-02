@@ -34,7 +34,7 @@ public class CardTest {
                 shouldHave(Condition.exactText("Операция одобрена Банком."));
     }
 
-    /*    @Test
+    @Test
         public void declinedCardTest() {
             var user = DataHelper.userDeclinedCard();
             mainPage.cardHolderNumber.setValue(user.getCardNumber());
@@ -45,7 +45,7 @@ public class CardTest {
             mainPage.buttonNext.click();
             mainPage.textCorrect.shouldBe(visible, Duration.ofSeconds(10)).
                     shouldHave(Condition.exactText("Карта заблокирована"));
-        }*/
+        }
     @Test
     public void dataFormEmptyNumberCard() {
         var user = DataHelper.userApprovedCard();

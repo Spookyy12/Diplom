@@ -21,7 +21,6 @@ public class CardTest {
     }
 
     @Test
-    @DisplayName("Оплата по активной карте. Валидные данные")
     public void approvedCardTest() {
         var user = DataHelper.userApprovedCard();
         mainPage.cardHolderNumber.setValue(user.getCardNumber());
@@ -69,7 +68,6 @@ public class CardTest {
     }
 
     @Test
-    @DisplayName("Оплата по активной карте. Валидные данные")
     public void dataFormEmptyYear() {
         var user = DataHelper.userApprovedCard();
         mainPage.cardHolderNumber.setValue(user.getCardNumber());
@@ -81,7 +79,6 @@ public class CardTest {
     }
 
     @Test
-    @DisplayName("Оплата по активной карте. Валидные данные")
     public void dataFormEmptyName() {
         var user = DataHelper.userApprovedCard();
         mainPage.cardHolderNumber.setValue(user.getCardNumber());

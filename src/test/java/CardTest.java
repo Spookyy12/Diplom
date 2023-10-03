@@ -1,5 +1,6 @@
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,10 @@ import static com.codeborne.selenide.Selenide.open;
 public class CardTest {
     MainPage mainPage = new MainPage();
     DataHelper dataHelper;
+    @AfterAll
+    static void tearDownAll(){
+        SQLHelper.cleanDataBase();
+    }
 
     @BeforeEach
     void setup() {

@@ -23,7 +23,7 @@ public class DataHelper {
         return LocalDate.now().plusDays(addDays).format(DateTimeFormatter.ofPattern((pattern)));
     }
 
-    static String monthGenerate = generateDate(1, "MM");
+    static String monthGenerate = generateDate(10, "MM");
     static String yearGenerate = generateDate(0, "yy");
 
     public static UserCardApproved userApprovedCard() {
@@ -84,6 +84,7 @@ public class DataHelper {
                 .statusCode(200)
                 .body("status", equalTo("APPROVED"));
     }
+
     public void sendRequestForApprovedCard(UserCardDeclined card) {
         given()
                 .spec(request)

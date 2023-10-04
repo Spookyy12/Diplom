@@ -1,11 +1,11 @@
 import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
-import static io.restassured.RestAssured.given;
 
 public class CardTest {
     DataHelper dataHelper = new DataHelper();
@@ -17,11 +17,7 @@ public class CardTest {
         open("http://localhost:8080/");
         mainPage.buttonReady.click();
     }
-    @Test
-    void asd(){
-        dataHelper.sendRequestForApprovedCard(DataHelper.userApprovedCard());
 
-    }
     @Test
     public void approvedCardTest() {
         var user = DataHelper.userApprovedCard();
@@ -39,6 +35,7 @@ public class CardTest {
     @Test
     public void declinedCardTest() {
         var user = DataHelper.userDeclinedCard();
+        dataHelper.sendRequestForApprovedCard(user);
         mainPage.cardHolderNumber.setValue(user.getNumber());
         mainPage.cardHolderMonthDate.setValue(user.getMonth());
         mainPage.cardHolderYearDate.setValue(user.getYear());

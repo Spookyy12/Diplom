@@ -1,12 +1,17 @@
-import com.github.javafaker.CreditCardType;
 import com.github.javafaker.Faker;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.filter.log.LogDetail;
+import io.restassured.http.ContentType;
+import io.restassured.specification.RequestSpecification;
 import lombok.Value;
 
-
-import java.security.Security;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
 
 public class DataHelper {
     DataHelper() {
@@ -22,31 +27,33 @@ public class DataHelper {
     static String yearGenerate = generateDate(0, "yy");
 
     public static UserCardApproved userApprovedCard() {
-        return new UserCardApproved(cvc, "1111 2222 3333 4444", monthGenerate,
-                yearGenerate, faker.name().fullName());
+        return new UserCardApproved("1111 2222 3333 4444", yearGenerate, monthGenerate,
+                faker.name().fullName(), cvc);
     }
 
     public static UserCardDeclined userDeclinedCard() {
-        return new UserCardDeclined(cvc, "5555 6666 7777 8888", monthGenerate,
-                yearGenerate, faker.name().fullName());
+        return new UserCardDeclined("5555 6666 7777 8888", yearGenerate, monthGenerate,
+                faker.name().fullName(), cvc);
+
     }
+
 
     @Value
     public static class UserCardApproved {
-        private String cvcCode;
-        private String cardNumber;
-        private String month;
+        private String number;
         private String year;
-        private String cardName;
+        private String month;
+        private String holder;
+        private String cvc;
     }
 
     @Value
     public static class UserCardDeclined {
-        private String cvcCode;
-        private String cardNumber;
-        private String month;
+        private String number;
         private String year;
-        private String cardName;
+        private String month;
+        private String holder;
+        private String cvc;
     }
 
     private static String randomCVC() {
@@ -58,4 +65,33 @@ public class DataHelper {
 
     static String cvc = randomCVC();
 
+    private static final RequestSpecification request = new RequestSpecBuilder()
+            .setBaseUri("http://localhost")
+            .setPort(8080)
+            .setAccept(ContentType.JSON)
+            .setContentType(ContentType.JSON)
+            .log(LogDetail.ALL)
+            .build();
+
+
+    public void sendRequestForApprovedCard(UserCardApproved card) {
+        given()
+                .spec(request)
+                .body(card)
+                .when()
+                .post("/api/v1/pay")
+                .then()
+                .statusCode(200)
+                .body("status", equalTo("APPROVED"));
+    }
+    public void sendRequestForApprovedCard(UserCardDeclined card) {
+        given()
+                .spec(request)
+                .body(card)
+                .when()
+                .post("/api/v1/pay")
+                .then()
+                .statusCode(200)
+                .body("status", equalTo("APPROVED"));
+    }
 }

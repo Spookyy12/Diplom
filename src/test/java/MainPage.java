@@ -26,9 +26,9 @@ public class MainPage {
     public SelenideElement errorExpiredCardYear = $x("//*[@id=\"root\"]/div/form/fieldset/div[2]/span/span[2]/span/span/span[3]");
     public SelenideElement errorExpiredCardMonth = $x("//*[@id=\"root\"]/div/form/fieldset/div[2]/span/span[1]/span/span/span[3]");
     public SelenideElement errorExpiredCvc = $x("//*[@id=\"root\"]/div/form/fieldset/div[3]/span/span[2]/span/span/span[3]\n");
+    public SelenideElement errorExpiredName = $x("//*[@id=\"root\"]/div/form/fieldset/div[3]/span/span[2]/span/span/span[3]\n");
 
-    //*[@id="root"]/div/form/fieldset/div[3]/span/span[2]/span/span/span[3]
-    //*[@id="root"]/div/form/fieldset/div[2]/span/span[2]/span/span/span[3]
+
     /*public void cardNumber(String card){
         buttonReady.click();
         cardHolderNumber.setValue(card);

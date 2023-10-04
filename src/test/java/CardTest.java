@@ -10,7 +10,6 @@ import static io.restassured.RestAssured.given;
 public class CardTest {
     DataHelper dataHelper = new DataHelper();
     MainPage mainPage = new MainPage();
-    ApiHelper api = new ApiHelper();
 
     @BeforeEach
     void setup() {

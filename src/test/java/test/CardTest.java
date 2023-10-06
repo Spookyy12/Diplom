@@ -1,4 +1,10 @@
+package test;
 import com.codeborne.selenide.Condition;
+
+import data.DataHelper;
+import data.DbHelper;
+import page.MainPage;
+import data.SQLHelper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -8,8 +14,9 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
 
 public class CardTest {
-    DataHelper dataHelper = new DataHelper();
     MainPage mainPage = new MainPage();
+    DataHelper dataHelper= new DataHelper();
+    DbHelper dbHelper = new DbHelper();
 
     @BeforeEach
     void setup() {
@@ -17,11 +24,16 @@ public class CardTest {
         open("http://localhost:8080/");
         mainPage.buttonReady.click();
     }
+    @Test
+    public void sui(){
+        SQLHelper.getPaymentStatus();
+
+    }
 
     @Test
     public void approvedCardTest() {
         var user = DataHelper.userApprovedCard();
-        dataHelper.sendRequestForApprovedCard(user);
+        dbHelper.sendRequestForApprovedCard(user);
         mainPage.cardHolderNumber.setValue(user.getNumber());
         mainPage.cardHolderMonthDate.setValue(user.getMonth());
         mainPage.cardHolderYearDate.setValue(user.getYear());
@@ -35,7 +47,7 @@ public class CardTest {
     @Test
     public void declinedCardTest() {
         var user = DataHelper.userDeclinedCard();
-        dataHelper.sendRequestForApprovedCard(user);
+        dbHelper.sendRequestForApprovedCard(user);
         mainPage.cardHolderNumber.setValue(user.getNumber());
         mainPage.cardHolderMonthDate.setValue(user.getMonth());
         mainPage.cardHolderYearDate.setValue(user.getYear());

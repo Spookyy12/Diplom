@@ -1,3 +1,5 @@
+package data;
+
 import com.github.javafaker.Faker;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
@@ -14,8 +16,6 @@ import static org.hamcrest.Matchers.equalTo;
 
 
 public class DataHelper {
-    DataHelper() {
-    }
 
     private static final Faker faker = new Faker(new Locale("en"));
 
@@ -65,34 +65,4 @@ public class DataHelper {
 
     static String cvc = randomCVC();
 
-    private static final RequestSpecification request = new RequestSpecBuilder()
-            .setBaseUri("http://localhost")
-            .setPort(8080)
-            .setAccept(ContentType.JSON)
-            .setContentType(ContentType.JSON)
-            .log(LogDetail.ALL)
-            .build();
-
-
-    public void sendRequestForApprovedCard(UserCardApproved card) {
-        given()
-                .spec(request)
-                .body(card)
-                .when()
-                .post("/api/v1/pay")
-                .then()
-                .statusCode(200)
-                .body("status", equalTo("APPROVED"));
-    }
-
-    public void sendRequestForApprovedCard(UserCardDeclined card) {
-        given()
-                .spec(request)
-                .body(card)
-                .when()
-                .post("/api/v1/pay")
-                .then()
-                .statusCode(200)
-                .body("status", equalTo("APPROVED"));
-    }
 }

@@ -3,8 +3,9 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
-data
-.idea
+.gradle/
+data/
+.idea/
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml

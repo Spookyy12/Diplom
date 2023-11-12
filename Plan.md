@@ -1,4 +1,11 @@
+![image](https://github.com/Spookyy12/Diplom/assets/131680995/3d93b09d-005c-47f8-a6f1-9e0db4266e43)
+![image](https://github.com/Spookyy12/Diplom/assets/131680995/f67f3d84-c157-4250-90a9-5d57e9306752)
+![image](https://github.com/Spookyy12/Diplom/assets/131680995/d5d18637-35c1-4c5e-9b49-2f1b9842554a)
+![image](https://github.com/Spookyy12/Diplom/assets/131680995/2cd80f18-ffbc-4498-ba52-d0eddd8a99e1)
+![image](https://github.com/Spookyy12/Diplom/assets/131680995/76ae1d84-bef6-42cc-ae70-7bed467ef807)
 
+![image](https://github.com/Spookyy12/Diplom/assets/131680995/30a89cba-dd22-4f5f-ba9c-e78a2cae54ec)
+![image](https://github.com/Spookyy12/Diplom/assets/131680995/6b7568ae-4497-4e6e-990c-ba833e1e0d72)
 
 ## 1. Перечень автоматических тестов 
 
